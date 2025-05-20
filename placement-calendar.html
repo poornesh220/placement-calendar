@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Placement Calendar</title>
+  <link rel="stylesheet" href="calendar.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f2f2f2;
+    }
+    header {
+        background-color: #004080;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .calendar-container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 30px auto;
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .calendar-table th, .calendar-table td {
+        border: 1px solid #ccc;
+        text-align: center;
+        padding: 15px;
+    }
+    .calendar-table th {
+        background-color: #007acc;
+        color: white;
+    }
+    .event {
+        background-color: #e6f7ff;
+        color: #004080;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Placement Calendar</h1>
+  </header>
+
+  <main>
+    <section id="calendar-container">
+      <div id="calendar-header">
+        <button id="prev">&lt;</button>
+        <h2 id="month-year"></h2>
+        <button id="next">&gt;</button>
+      </div>
+      <table id="calendar">
+        <thead>
+          <tr>
+            <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th>
+            <th>Thu</th><th>Fri</th><th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="calendar.js"></script>
+</body>
+</html>
