@@ -30,7 +30,7 @@ header nav ul.nav-links {
     gap: 30px;
 }
 header nav ul.nav-links li a {
-    color: white;
+    color: yellow;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
@@ -64,7 +64,7 @@ main {
     color: #004080;
 }
 #calendar-header button {
-    background-color: #007acc;
+    background-color: black;
     border: none;
     color: white;
     padding: 10px 18px;
