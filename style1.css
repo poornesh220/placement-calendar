@@ -1,0 +1,756 @@
+/* Base Styles */
+:root {
+  --amity-blue: #0f2b68;
+  --amity-dark-blue: #1a2c4e;
+  --amity-yellow: #ffc726;
+  --amity-yellow-hover: #e6b325;
+  --text-dark: #333;
+  --text-gray: #4b5563;
+  --text-light-gray: #6b7280;
+  --text-white: #fff;
+  --background-light: #f9fafb;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-color: #ddd;
+  --border-light: #e5e7eb;
+  --primary-color: #0f385f; /* Used by feature-icon if not overridden */
+  --secondary-color: #e74c3c; /* Used by error-message, not in index.html directly */
+  --light-bg: #f8f9fa; /* Used by .resources-section, not directly by index.html but referenced */
+  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1); /* Used by various hover/active states & news-ticker */
+  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15); /* Used by various hover states */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 8px 24px;
+  font-weight: 500;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--amity-yellow);
+  color: var(--amity-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--amity-yellow-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Remove top action bar - we'll move these buttons to the header */
+.top-action-bar {
+  display: none;
+}
+
+/* Header */
+header {
+  background-color: var(--amity-blue);
+  padding: 12px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  margin-right: auto;
+  padding-left: 16px;
+}
+
+.logo-placeholder {
+  height: 70px;
+  width: 140px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo-placeholder:hover {
+  transform: scale(1.05);
+}
+
+.logo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.site-title {
+  color: white;
+  margin-left: 0;
+}
+
+.site-title h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.site-title p {
+  font-size: 15px;
+  margin: 3px 0 0 0;
+  line-height: 1.4;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  position: relative;
+  background: transparent;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(15,56,95,0.04);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.main-nav a:hover {
+  color: var(--amity-yellow);
+}
+
+.main-nav a.active {
+  color: var(--amity-yellow);
+}
+
+.main-nav a.active:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--amity-yellow);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.mobile-menu-btn {
+  display: none; /* Shown via media query */
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--amity-blue);
+  padding: 48px 0;
+  color: white;
+  margin-top: 70px; /* To offset fixed header height, adjust if header height changes */
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first, desktop overridden by media query */
+  gap: 32px;
+  align-items: center; /* Added for better alignment with image */
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.hero-buttons .btn { /* Specifics for hero buttons */
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 200px;
+  text-align: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary {
+  background-color: var(--amity-yellow);
+  color: var(--amity-blue);
+  box-shadow: 0 4px 15px rgba(255, 199, 38, 0.3);
+}
+
+.hero-buttons .btn-primary:hover {
+  background-color: #ffd54f; /* Slightly lighter yellow */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 199, 38, 0.4);
+}
+
+.hero-buttons .btn-outline {
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.hero-buttons .btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.campus-image-placeholder { /* Used instead of .hero-image class */
+  height: 300px;
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.2); /* Placeholder background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* For text if image fails */
+  border-radius: 8px;
+  margin: 0 auto;
+  overflow: hidden; /* Ensures image stays within bounds */
+}
+
+.campus-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Stats Section */
+.stats {
+  padding: 64px 0;
+  background-color: var(--background-light);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first */
+  gap: 24px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--amity-yellow);
+}
+
+.stat-card h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--amity-blue);
+  margin-bottom: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card p {
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+/* Latest News Section Styles */
+.latest-news {
+  background-color: var(--background-light); /* Or choose another suitable background */
+  padding: 2rem 0;
+  overflow: hidden; /* Important for ticker */
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.latest-news h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--amity-blue);
+  font-size: 1.8rem; /* Adjusted for section */
+  font-weight: 600;
+}
+
+.news-ticker {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--amity-blue); /* Theme color for ticker background */
+  padding: 1rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.news-ticker-content {
+  display: flex;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap; /* Essential for ticker items */
+}
+
+.news-item {
+  padding: 0 2rem; /* Spacing between news items */
+  font-size: 1.1rem;
+  color: white;
+  display: inline-block; /* Allows items to sit side-by-side */
+}
+
+.news-item:hover {
+  color: var(--amity-yellow); /* Highlight on hover */
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%); /* Adjust based on content width if it's not fully off-screen */
+  }
+}
+
+/* Pause animation on hover */
+.news-ticker:hover .news-ticker-content {
+  animation-play-state: paused;
+}
+
+/* Features Section */
+.features {
+  padding: 64px 0;
+  background-color: white;
+}
+
+.features h2 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--amity-blue);
+  margin-bottom: 8px;
+}
+
+.section-description { /* Used by Features section */
+  text-align: center;
+  color: var(--text-gray);
+  margin-bottom: 48px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 8px 32px;
+  color: var(--text-light-gray);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  border-bottom: 2px solid var(--amity-blue);
+  color: var(--amity-blue);
+  font-weight: 500;
+}
+
+.tab-btn:hover:not(.active) {
+  color: var(--amity-blue);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first */
+  gap: 32px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+  border-color: var(--amity-yellow);
+}
+
+.feature-icon {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 64px;
+  height: 64px;
+  padding: 16px; /* Ensure SVG fits well */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* SVG icon styling within feature-icon */
+.feature-icon .icon { /* Targets SVG with class="icon" */
+  width: 32px;
+  height: 32px;
+  color: var(--amity-blue); /* Or var(--primary-color) */
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: var(--amity-blue);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card p {
+  color: var(--text-gray);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.feature-link {
+  border: 1px solid var(--amity-blue);
+  color: var(--amity-blue);
+  font-weight: 500;
+  padding: 8px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.feature-link:hover {
+  background-color: var(--amity-blue);
+  color: white;
+}
+
+/* Call to Action */
+.cta {
+  padding: 80px 0;
+  background-color: var(--amity-blue);
+  color: white;
+  text-align: center;
+}
+
+.cta h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.cta p {
+  font-size: 20px;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap; /* For responsiveness */
+}
+
+/* Improved Footer */
+footer {
+  background-color: var(--amity-dark-blue);
+  color: white;
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile first */
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer-info h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: var(--amity-yellow);
+}
+
+.footer-info p {
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.footer-links { /* Applies to multiple columns in footer */
+  margin-bottom: 16px;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: var(--amity-yellow);
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0; /* Reset default padding */
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  color: var(--border-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--amity-yellow);
+}
+
+.footer-links p { /* For contact info lines */
+    margin-bottom: 8px;
+    font-size: 15px; /* Match other p tags in footer */
+    color: var(--border-light); /* Match link color for consistency or use a specific color */
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.social-icons a {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.social-icons a:hover {
+  background-color: var(--amity-yellow);
+  transform: translateY(-3px);
+}
+
+/* Styles for SVGs within .social-icons a, assuming they have width/height attributes or use a class like .icon */
+.social-icons a svg {
+  width: 20px; /* Default size, can be overridden by SVG attributes */
+  height: 20px; /* Default size */
+  fill: currentColor; /* To inherit color from parent 'a' tag if needed */
+}
+/* If SVGs are intended to use .icon or .social-icon class from the original CSS: */
+.social-icons .icon,
+.social-icons .social-icon { /* From original full CSS, useful if you add these classes to SVGs */
+  width: 20px;
+  height: 20px;
+  object-fit: contain; /* More for <img>, but harmless for SVG */
+}
+
+
+.copyright {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .main-nav {
+    display: flex; /* Ensure it's flex on desktop, might be overridden by mobile */
+  }
+
+  .hero-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-content {
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Example: 2 for info, 1 for each links col */
+  }
+}
+
+@media (max-width: 767px) {
+  .header-content {
+    flex-wrap: wrap;
+    padding: 8px 16px; /* Adjusted padding for mobile */
+    position: relative; /* For mobile menu button positioning */
+    padding-bottom: 0; /* If nav stacks below */
+  }
+
+  .logo-section {
+    width: 100%; /* Center logo on mobile */
+    justify-content: center;
+    padding-left: 0; /* Reset padding if centered */
+    margin-right: 0; /* Reset margin if centered */
+  }
+
+  .main-nav {
+    width: 100%;
+    order: 3; /* Nav below logo and auth buttons */
+    /* display: none; controlled by JS for toggle */
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  /* This rule targets the <nav> element itself */
+  nav.main-nav { /* More specific for the nav element */
+    display: none; /* Initially hidden, shown by .show */
+    flex-wrap: wrap;
+    justify-content: space-between; /* Or center if preferred */
+    align-items: center;
+    position: relative; /* Or static depending on layout needs */
+    width: 100%;
+  }
+
+
+  .auth-buttons {
+    width: auto; /* Allow to shrink */
+    order: 2; /* Auth buttons beside logo area or as per design */
+    margin-left: 0; /* Adjust if needed */
+    /* Example: to put it on the right of a centered logo, might need more structure */
+    position: absolute; /* Example if it needs to be top-right beside menu icon */
+    top: 16px; /* Align with mobile menu */
+    right: 50px; /* Space from mobile menu */
+  }
+
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px; /* Max width for stacked buttons */
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    position: absolute;
+    top: 16px; /* Adjust as needed */
+    right: 16px; /* Adjust as needed */
+  }
+
+  /* .main-nav is already styled for mobile above */
+  /* .nav-links is not used in index.html, so styles for it are omitted unless .main-nav is .nav-links */
+  .main-nav.show { /* This class will be toggled by JavaScript */
+    display: flex;
+  }
+
+  .main-nav a { /* Adjust padding/margin for stacked links */
+    margin: 0.5rem 0;
+    padding: 0.5rem 0; /* Full width clickable area */
+  }
+}
