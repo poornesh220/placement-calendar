@@ -10,8 +10,8 @@ body {
 }
 
 .navbar {
-    background-color: #141414; /* Match navbar background */
-    color: #fff;
+    background-color: blue; /* Match navbar background */
+    color: yellow;
     padding: 1em 0;
     display: flex;
     justify-content: space-between;
@@ -21,10 +21,10 @@ body {
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: bold;
-    margin-left: 25px;
-    color: #e50914; /* Netflix red accent */
+    margin-left: 27px;
+    color: red; /* Netflix red accent */
 }
 
 .nav-links {
@@ -333,7 +333,7 @@ body {
 .footer-section ul li a {
     text-decoration: none;
     color: #ccc; /* Lighter footer link text */
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 }
 
 .footer-section ul li a:hover {
@@ -362,8 +362,8 @@ body {
     text-align: center;
     padding-top: 1em;
     border-top: 1px solid #222; /* Darker bottom border */
-    font-size: 0.9em;
-    color: #999; /* Darker copyright text */
+    font-size: 1em;
+    color: red; /* Darker copyright text */
 }
 
 /* Responsive adjustments */
